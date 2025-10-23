@@ -6,10 +6,21 @@ public class Main {
         System.out.println(room1);
         System.out.println("Is available? " + room1.isAvailable());
 
+        System.out.println();
+
         Reservation r1 = new Reservation("king", 3, true);
         System.out.println("Reservation total: $" + r1.getReservationTotal());
 
         Reservation r2 = new Reservation("double", 2, false);
         System.out.println("Reservation total: $" + r2.getReservationTotal());
+
+        System.out.println();
+
+        Employee e1 = new Employee(101, "Janus Doeus", "Front Desk Clerk", 18.50,45);
+        System.out.println(e1);
+        System.out.println("Pay for 40 hours: $" + e1.calculatePay(40));
+        System.out.println("Regular Hours: " + e1.getRegularHours());
+        System.out.println("Overtime Hours: " + e1.getOvertimeHours());
+        System.out.println("Total Pay: $" + e1.getTotalPay());
     }
 }
