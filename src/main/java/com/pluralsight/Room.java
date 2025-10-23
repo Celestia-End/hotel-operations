@@ -49,4 +49,29 @@ public class Room {
     public boolean isAvailable() {
         return !occupied && !dirty;
     }
+
+    public void checkIn() {
+        if (!isAvailable()) {
+            System.out.println("Room not available for check-in.");
+        } else {
+            occupied = true;
+            dirty = true;
+            System.out.println("Guest checked in successfully.");
+        }
+    }
+
+    public void checkout() {
+        if (!occupied) {
+            System.out.println("Room is not currently occupied.");
+        } else {
+            occupied = false;
+            // stays dirty after checkout
+            System.out.println("Guest checked out. Room now dirty and vacant.");
+        }
+    }
+
+    public void cleanRoom() {
+        dirty = false;
+        System.out.println("Room has been cleaned and is now available.");
+    }
 }

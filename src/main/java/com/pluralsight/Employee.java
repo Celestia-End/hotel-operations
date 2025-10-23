@@ -6,6 +6,9 @@ public class Employee {
     private String position;
     private double hourlyRate;
     private int hoursWorked;
+    private double punchInTime;
+    private double totalHoursWorked;
+    private boolean clockedIn;
 
     public Employee(int id, String name, String position, double hourlyRate, int hoursWorked) {
         this.id = id;
@@ -63,5 +66,31 @@ public class Employee {
 
     public double calculatePay(int hoursWorked) {
         return hourlyRate * hoursWorked;
+    }
+
+    public void punchIn(double time) {
+        if (clockedIn) {
+            System.out.println(name + " is already punched in!");
+        } else {
+            punchInTime = time;
+            clockedIn = true;
+            System.out.println(name + " punched in at " + time);
+        }
+    }
+
+    public void punchOut(double time) {
+        if (!clockedIn) {
+            System.out.println(name + " has not punched in yet!");
+        } else {
+            double hoursWorked = time - punchInTime;
+            totalHoursWorked += hoursWorked;
+            clockedIn = false;
+            System.out.println(name + " punched out at " + time +
+                    " (" + hoursWorked + " hours this shift)");
+        }
+    }
+
+    public double getHoursWorked() {
+        return totalHoursWorked;
     }
 }
